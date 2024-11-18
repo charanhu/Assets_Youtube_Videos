@@ -1,1 +1,10 @@
 /venv
+venv
+venv/
+vectorstore
+__pycache__
+
+
+*.env
+*.db
+*.lock
