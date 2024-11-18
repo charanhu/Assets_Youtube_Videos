@@ -171,5 +171,6 @@ __pycache__
 *.env
 *.db
 *.lock
+db
 
 
