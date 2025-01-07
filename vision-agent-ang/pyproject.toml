@@ -1,0 +1,112 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "vision-agent"
+version = "0.2.222"
+description = "Toolset for Vision Agent"
+authors = ["Landing AI <dev@landing.ai>"]
+readme = "README.md"
+packages = [{include = "vision_agent"}]
+include = [{path = "vision_agent/.sim_tools/*"}]
+
+[tool.poetry.urls]
+"Homepage" = "https://landing.ai"
+"repository" = "https://github.com/landing-ai/vision-agent"
+"documentation" = "https://github.com/landing-ai/vision-agent"
+
+[tool.poetry.dependencies]  # main dependency group
+python = ">=3.9,<4.0"
+
+numpy = ">=1.21.0,<2.0.0"
+pillow = "10.*"
+requests = "2.*"
+tqdm = ">=4.64.0,<5.0.0"
+pandas = "2.*"
+openai = "1.*"
+flake8 = "^7.0.0"
+typing_extensions = "4.*"
+opencv-python = "4.*"
+tabulate = "^0.9.0"
+pydantic-settings = "^2.2.1"
+scipy = "1.13.*"
+nbclient = "^0.10.0"
+nbformat = "^5.10.4"
+rich = "^13.7.1"
+langsmith = "^0.1.58"
+ipykernel = "^6.29.4"
+e2b = "^0.17.2a50"
+e2b-code-interpreter = "0.0.11a37"
+tenacity = "^8.3.0"
+pillow-heif = "^0.16.0"
+pytube = "15.0.0"
+anthropic = "^0.31.0"
+pydantic = "2.7.4"
+av = "^11.0.0"
+libcst = "^1.5.0"
+matplotlib = "^3.9.2"
+scikit-learn = "^1.5.2"
+opentelemetry-api = "^1.29.0"
+
+[tool.poetry.group.dev.dependencies]
+autoflake = "1.*"
+pytest = "7.*"
+black = ">=23,<25"
+isort = "5.*"
+responses = "^0.23.1"
+mypy = "<1.8.0"
+types-requests = "^2.31.0.0"
+types-pillow = "^9.5.0.4"
+data-science-types = "^0.2.23"
+types-tqdm = "^4.65.0.1"
+setuptools = "^68.0.0"
+griffe = "^0.45.3"
+mkdocs = "^1.5.3"
+mkdocstrings = {extras = ["python"], version = "^0.23.0"}
+mkdocs-material = "^9.4.2"
+types-tabulate = "^0.9.0.20240106"
+scikit-image = "<0.23.1"
+pre-commit = "^3.8.0"
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.black]
+exclude = '.vscode|.eggs|venv'
+line-length = 88  # suggested by black official site
+
+[tool.isort]
+line_length = 88
+profile = "black"
+
+[tool.mypy]
+plugins = "pydantic.mypy"
+
+exclude = "tests"
+show_error_context = true
+pretty = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+strict_optional = true
+strict_equality = true
+extra_checks = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_return_any = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+    "cv2.*",
+    "openai.*",
+    "sentence_transformers.*",
+    "e2b_code_interpreter.*",
+    "e2b.*"
+]
